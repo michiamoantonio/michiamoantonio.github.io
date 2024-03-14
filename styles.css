@@ -306,7 +306,7 @@
       flex: 0 1 100%;
       margin-bottom: 20px; /* Adjust margin as needed */
       box-sizing: border-box;
-      min-width: 450px;
+      min-width: 350px;
       max-width: 550px;
       width: 60%;
     }
