@@ -139,6 +139,10 @@
     justify-content: center;
     margin-top: 20px;
     box-sizing: border-box;
+    /* border-image: url(./images/border.png) 30 stretch; */
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 20px 0;
   }
 
   .countdown ul {
@@ -172,7 +176,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: -151px;
-    padding: 151px 0 0 0;
+    padding: 151px 0 50px 0;
     max-width: 100%;
     width: 100%;
   }
@@ -186,20 +190,7 @@
     margin: 0 0; /* Adjust margin as needed */
   }
 
-  @media screen and (max-width: 968px) {
-    .info-container {
-      flex-direction: column;
-      align-items: center;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
   
-    .info-container .info-element {
-      flex: 0 1 100%;
-      margin-bottom: 20px; /* Adjust margin as needed */
-      box-sizing: border-box;
-    }
-  }
 
 
   .card {
@@ -213,7 +204,14 @@
     box-sizing: border-box;
   }
   
+  .cover-img{
+    height: 225px;
+    box-shadow: 0 0 11px 25px white inset;
+    background-size: cover;
+  } 
+
   .circle-icon {
+    visibility: hidden;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -228,11 +226,12 @@
     left: 50%;
     transform: translateX(-50%);
     box-sizing: border-box;
+    background-size: contain;
   }
 
   .inner-card {
     border: 2px solid black;
-    padding: 40px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
     box-sizing: border-box;
   }
 
@@ -270,6 +269,53 @@
     bottom: 15px;
     right: 15px;
     box-sizing: border-box;
+  }
+
+   /* Styling the button */
+   .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border: 2px solid black;
+    position: relative;
+  }
+
+  /* Button hover effect */
+  .btn:hover {
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+    transition: background-color 0.7s ease;
+  }
+
+  .inner-card h2 {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 968px) {
+    .info-container {
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  
+    .info-container .info-element {
+      flex: 0 1 100%;
+      margin-bottom: 20px; /* Adjust margin as needed */
+      box-sizing: border-box;
+      min-width: 450px;
+      max-width: 550px;
+      width: 60%;
+    }
+
+    .cover-img{
+      height: 300px;
+      box-shadow: 0 0 11px 25px white inset;
+      background-size: cover;
+    } 
   }
 
 /* 
