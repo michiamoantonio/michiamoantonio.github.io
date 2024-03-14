@@ -8,37 +8,42 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
+  <!-- <div class="nav">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars">Menu</i>
+    </label>
+    <ul>
+      <li><a class="active" href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div> -->
 
-    <header>
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-              <i class="fas fa-bars">Menu</i>
-            </label>
-            <ul>
-              <li><a class="active" href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </nav>
-    </header>
 
-    <main>
-        <div class="intro-block">
-            <h1 class="intro-title">Tonia e Francesco</h1>
-            <img src="./images/divisore.png"/>
-            <p>Ci sposiamo!</p>
-            <div class="countdown">
-                <ul>
-                    <li><span id="giorni">0</span> Giorni</li>
-                    <li><span id="ore">0</span> Ore</li>
-                    <li><span id="minuti">0</span> Minuti</li>
-                </ul>
-            </div>
-        </div>
-        
-    </main>
+  <div class="intro-block parallax">
+    <div class="parallax-alpha">
+      <p class="intro-title">Tonia e Francesco</p>
+      <img class="divisore" src="./images/divisore.png"/>
+      <p>Ci sposiamo!</p>
+      <div class="countdown">
+          <ul>
+              <li><span id="giorni">0</span> Giorni</li>
+              <li><span id="ore">0</span> Ore</li>
+              <li><span id="minuti">0</span> Minuti</li>
+          </ul>
+      </div>
+
+      <p style="margin-top: 40px; font-size: 18px;">scorri per i dettagli</p>
+    </div>
+  </div>
+  <div class="fiori">
+    <img class="caricatura" src="./images/caricatura-circle.png"/>
+  </div>
+  <div class="info-container">
+    Informazioni qui
+  </div>
 
     <footer>
         <!-- Your footer content goes here -->
@@ -47,7 +52,7 @@
 
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("Mar 31, 2024 00:00:00").getTime();
+        var countDownDate = new Date("Aug 09, 2024 11:00:00").getTime();
       
         // Update the countdown every 1 second
         var x = setInterval(function() {
