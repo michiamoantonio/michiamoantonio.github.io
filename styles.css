@@ -208,6 +208,7 @@
     height: 225px;
     box-shadow: 0 0 11px 25px white inset;
     background-size: cover;
+    background-position-x:center;
   } 
 
   .circle-icon {
@@ -316,6 +317,10 @@
       box-shadow: 0 0 11px 25px white inset;
       background-size: cover;
     } 
+
+    .parallax{
+      background-attachment: scroll;
+    }
   }
 
 /* 
