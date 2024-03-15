@@ -105,6 +105,9 @@
     font-weight: 300;
     box-sizing: border-box;
   }
+  .intro-title span{
+    display: inline-block;
+  }
 
   .divisore {
     max-width: 100%;
@@ -205,7 +208,8 @@
   }
   
   .cover-img{
-    height: 225px;
+    height: calc(100vw / 5);
+    max-height: 350px;
     box-shadow: 0 0 11px 25px white inset;
     background-size: cover;
     background-position-x:center;
@@ -313,13 +317,20 @@
     }
 
     .cover-img{
-      height: 300px;
+      height: calc(100vw / 3);
+      min-height: 225px;
       box-shadow: 0 0 11px 25px white inset;
       background-size: cover;
     } 
 
     .parallax{
       background-attachment: scroll;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .intro-title span{
+      min-width: 100%;
     }
   }
 
