@@ -163,6 +163,7 @@
       <script>
         function openCalendar() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        console.log(userAgent)
         var startDate = encodeURIComponent('YYYYMMDDTHHmmssZ'); // Format: YYYYMMDDTHHmmssZ (UTC time)
         var endDate = encodeURIComponent('YYYYMMDDTHHmmssZ'); // Format: YYYYMMDDTHHmmssZ (UTC time)
         var title = encodeURIComponent('Event Title');
