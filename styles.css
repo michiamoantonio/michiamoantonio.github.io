@@ -21,12 +21,8 @@
     text-align: center;
     background-color: rgb(243,240,238);
     box-sizing: border-box;
-    position: fixed!important;
   }
 
-  html {
-    width: 100%;
-  }
 
 /* 
   .nav{
