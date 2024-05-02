@@ -76,7 +76,7 @@
 
   .parallax{
     width: 100%;
-    background-image: url('./images/istockphoto-1365865879-612x612.jpg');
+    background-image: url('./images/CARICATURA.jpg');
     height: fit-content; 
     background-attachment: fixed;
     background-position: center;
@@ -85,8 +85,11 @@
     box-sizing: border-box;
   }
 
+
+  /*rgba(0, 0, 0, 0.35), rgba(242, 239, 237, 0.75)*/
+
   .parallax-alpha{
-    background-color: rgba(255,255,255,0.3);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.30), rgba(242, 239, 237, 1) 99%);
     /* height: 100%; */
     /* Center align text */
     display: flex;
@@ -129,8 +132,23 @@
     align-items: center;
     box-sizing: border-box;
   }
+
+  .separatore-fiori{
+    height: 70px;
+    width: auto;
+    background-image: url('./images/divisore.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
   
   .fiori .caricatura {
+    display: none;
     height: 60%;
     border-radius: 50%;
     box-sizing: border-box;
@@ -193,6 +211,15 @@
     margin: 0 0; /* Adjust margin as needed */
   }
 
+  .info-container .iban-element {
+    flex: 0 1 calc(100%); /* Adjust as needed */
+    background-color: #f0f0f0;
+    padding: 40px 20px 20px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 0; /* Adjust margin as needed */
+  }
+
   
 
 
@@ -206,6 +233,55 @@
     background-color: #fff;
     box-sizing: border-box;
   }
+
+  .iban-card {
+    /* border: 1px solid #ccc; 
+    border-radius: 8px;*/
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+
+  .iban-separated{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding: 40px 20px 20px;
+    justify-content: center;
+  }
+
+  .iban-separated>.cover-img{
+    flex: 0 1 calc(30%);
+    height: calc(100vw / 5);
+    max-height: 350px;
+    max-width: 370px;
+    min-width: 300px;
+    background-size: contain;
+    background-position-x:center;
+    background-position-y:center;
+    background-clip: content-box;
+    background-repeat: no-repeat;
+    padding: 3px;
+  } 
+
+  .iban-separated>.viaggio-testo{
+    text-align: left;
+    flex: 0 1 calc(40%);
+    max-width: 520px;
+    min-width: 410px;
+    font-size: 80px;
+    font-family: bloomlife;
+  }
+  .iban-separated>.viaggio-testo>span{
+    display: inline-block;
+  }
+
+  .iban-testo{
+    font-size:40px;
+  }
   
   .cover-img{
     height: calc(100vw / 5);
@@ -213,6 +289,8 @@
     box-shadow: 0 0 11px 25px white inset;
     background-size: cover;
     background-position-x:center;
+    background-clip: content-box;
+    padding: 3px;
   } 
 
   .circle-icon {
@@ -236,7 +314,7 @@
 
   .inner-card {
     border: 2px solid black;
-    padding: 0px 20px 20px 20px;
+    padding: 5px 20px 20px 20px;
     box-sizing: border-box;
   }
 
@@ -299,7 +377,37 @@
     margin-bottom: 20px;
   }
 
+  #iban-btn{
+    margin-top: 10px;
+  }
+
   @media screen and (max-width: 968px) {
+    .iban-testo{
+      font-size:28px;
+    }
+    .iban-separated{
+      flex-direction: column;
+      padding: 0;
+    }
+  
+    .iban-separated>.cover-img{
+      flex: 0 1 calc(100%);
+      order:1;
+      min-width: 220px;
+      max-width: 220px;
+    } 
+  
+    .iban-separated>.viaggio-testo{
+      flex: 0 1 calc(100%);
+      font-size: 50px;
+      order: 2;
+      min-width: 220px;
+      max-width: 220px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+
     .info-container {
       flex-direction: column;
       align-items: center;
@@ -321,6 +429,13 @@
       min-height: 225px;
       box-shadow: 0 0 11px 25px white inset;
       background-size: cover;
+    } 
+
+    .iban-card>.inner-card>.cover-img{
+      height: calc(100vw / 3);
+      min-height: 225px;
+      background-size: contain;
+      background-repeat: no-repeat;
     } 
 
     .parallax{
