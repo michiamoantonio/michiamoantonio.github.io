@@ -26,6 +26,8 @@ UID:cisposiamo@toniaefrancesco.it
 DTSTART;VALUE=DATE:20240810
 DTEND;VALUE=DATE:20240811
 SUMMARY:Tonia e Francesco
+URL:https://www.toniaefrancesco.it
+DESCRIPTION:Matrimonio
 LOCATION:Via S. Rocco\, 72013 Ceglie Messapica BR
 END:VEVENT
 END:VCALENDAR

@@ -62,7 +62,14 @@
           <div class="cover-img" style="background-position-y:bottom; background-image: url('./images/ceglie1.png')"></div>
           <h1>Sabato 10 Agosto</h1>
           <h2>Ore 10:00</h2>
-          <button onClick="openCalendar()" class="btn">Aggiungi al calendario</button>
+          <!--<button onClick="openCalendar()" class="btn">Aggiungi al calendario</button>-->
+          <div class="dropdown">
+            <button onclick="openCalendar()" class="btn ">Aggiungi al calendario</button>
+            <div id="myDropdown" class="dropdown-content">
+              <button id="google-btn">Google Calendar</button>
+              <button id="apple-btn">Apple Calendar</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -79,7 +86,7 @@
           <div class="cover-img" style="background-image: url('./images/chiesa1.png')"></div>
           <h1>Chiesa San Rocco</h1>
           <h2>Ceglie Messapica</h2>
-          <button class="btn">Vai alla mappa</button>
+          <button id="chiesa-btn" class="btn">Vai alla mappa</button>
         </div>
       </div>
     </div>
@@ -96,7 +103,7 @@
           <div class="cover-img"  style="background-image: url('./images/chiusa1.png')"></div>
           <h1>La chiusa di Chietri</h1>
           <h2>SS 172 dei Trulli, Alberobello, BA</h2>
-          <button class="btn">Vai alla mappa</button>
+          <button id="rist-btn" class="btn">Vai alla mappa</button>
         </div>
       </div>
     </div>
@@ -122,7 +129,8 @@
             <div class="cover-img" style=" background-image: url('./images/viaggio.png')"></div>
           </div>
           <div class="iban-testo">IBAN: IT10W0306979152100000004902 <br> Antonia Argentiero</div>
-          <button id="iban-btn" class="btn">Copia IBAN</button>
+          <button onClick="copyText()" id="iban-btn" class="btn">Copia IBAN</button>
+          <div class="toast" id="toast" style="font-size: 12px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">IBAN copiato!</div>
         </div>
       </div>
     </div>
@@ -162,55 +170,117 @@
 
       <script>
         function openCalendar() {
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        console.log(userAgent)
-        var startDate = encodeURIComponent('YYYYMMDDTHHmmssZ'); // Format: YYYYMMDDTHHmmssZ (UTC time)
-        var endDate = encodeURIComponent('YYYYMMDDTHHmmssZ'); // Format: YYYYMMDDTHHmmssZ (UTC time)
-        var title = encodeURIComponent('Event Title');
-        var location = encodeURIComponent('Event Location');
+          var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        if (/android/i.test(userAgent)) {
-          // Open Google Calendar for Android users
-          window.location.href = generateGoogleCalendarUrl();
-        } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
-          // For iOS users, prompt to download .ics file
-          downloadICSFile(startDate, endDate, title, location);
-        } else if (/windows/i.test(userAgent)) {
-          // For Windows users, prompt to download .ics file for Outlook
-          downloadICSFile(startDate, endDate, title, location);
-        } else {
-          // For other devices, provide options
-          toggleDropdown(startDate, endDate, title, location);
+          // Event details
+          var startDate = 'YYYYMMDDTHHmmssZ'; // Format: YYYYMMDDTHHmmssZ (UTC time)
+          var endDate = 'YYYYMMDDTHHmmssZ'; // Format: YYYYMMDDTHHmmssZ (UTC time)
+          var title = 'Event Title';
+          var location = 'Event Location';
+          var details = 'Event Details';
+
+          if (/android/i.test(userAgent)) {
+            // Open Google Calendar for Android users
+            openGoogleCalendar(startDate, endDate, title, location, details);
+          } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
+            // For iOS users, prompt to download .ics file
+            downloadICSFile(startDate, endDate, title, location, details);
+          } else {
+            // For other devices, show the dropdown menu
+            toggleDropdown();
+          }
         }
-      }
 
-      function generateGoogleCalendarUrl(startDate, endDate, title, location) {
-        return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + startDate + '/' + endDate + '&location=' + location;
-      }
+        function openGoogleCalendar(startDate, endDate, title, location, details) {
+          // Generate Google Calendar URL
+          var googleCalendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + encodeURIComponent(startDate) + '/' + encodeURIComponent(endDate) + '&details=' + encodeURIComponent(details) + '&location=' + encodeURIComponent(location);
 
-      function downloadICSFile(startDate, endDate, title, location) {
+          // Open Google Calendar URL in a new tab
+          window.open(googleCalendarUrl, '_blank');
+        }
 
-        var appleCalendarUrl = './toniaefrancesco.ics';
+        function downloadICSFile(startDate, endDate, title, location, details) {
+          // Generate iCal download
+          var appleCalendarUrl = './toniaefrancesco.ics';
 
-        // Trigger download
-        var downloadLink = document.createElement('a');
-        downloadLink.href = appleCalendarUrl;
-        downloadLink.download = 'toniaefrancesco.ics';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-      }
+          // Trigger download
+          var downloadLink = document.createElement('a');
+          downloadLink.href = appleCalendarUrl;
+          downloadLink.download = 'toniaefrancesco.ics';
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+        }
+
+        function toggleDropdown() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
 
       document.getElementById('google-btn').addEventListener('click', function() {
         // Add event to Google Calendar
-        // Implement Google Calendar functionality here
+        var startDate = '20240810'; // Format: YYYYMMDDTHHmmssZ (UTC time)
+        var endDate = '20240810'; // Format: YYYYMMDDTHHmmssZ (UTC time)
+        var title = 'Tonia e Francesco';
+        var location = 'Via S. Rocco, 72013 Ceglie Messapica BR';
+        var details = 'Matrimonio';
+        openGoogleCalendar(startDate, endDate, title, location, details);
       });
 
-      document.getElementById('outlook-btn').addEventListener('click', function() {
-        // Add event to Outlook Calendar
-        // Implement Outlook Calendar functionality here
+      document.getElementById('apple-btn').addEventListener('click', function() {
+        // Add event to Apple Calendar
+        var startDate = '20240810'; // Format: YYYYMMDDTHHmmssZ (UTC time)
+        var endDate = '20240810'; // Format: YYYYMMDDTHHmmssZ (UTC time)
+        var title = 'Tonia e Francesco';
+        var location = 'Via S. Rocco, 72013 Ceglie Messapica BR';
+        downloadICSFile(startDate, endDate, title, location, details);
       });
 
+      </script>
+
+      <script>
+        function openExternalLink(link){
+          window.open(link, '_blank');
+        }
+
+        document.getElementById('chiesa-btn').addEventListener('click', function() {
+          openExternalLink('https://maps.app.goo.gl/HNGVab9W9VzaXhQB9');
+        });
+
+        document.getElementById('rist-btn').addEventListener('click', function(){
+          openExternalLink('https://maps.app.goo.gl/JSrTyR4Ds59fSxrY7');
+        });
+      </script>
+
+      <script>
+        function copyText() {
+          var textToCopy = "IT10W0306979152100000004902";
+          navigator.clipboard.writeText(textToCopy)
+            .then(function() {
+              // Show toast message
+              var toast = document.getElementById("toast");
+              toast.className = "toast show";
+              setTimeout(function(){
+                toast.className = toast.className.replace("show", ""); 
+              }, 3000);
+            })
+            .catch(function(err) {
+              console.error('Could not copy text: ', err);
+            });
+        }
       </script>
 
 </body>
