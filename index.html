@@ -62,7 +62,7 @@
           <div class="cover-img" style="background-position-y:bottom; background-image: url('./images/ceglie1.png')"></div>
           <h1>Sabato 10 Agosto</h1>
           <h2>Ore 10:00</h2>
-          <button class="btn">Aggiungi al calendario</button>
+          <button onClick="openCalendar()" class="btn">Aggiungi al calendario</button>
         </div>
       </div>
     </div>
@@ -158,6 +158,58 @@
             document.getElementById("countdown").innerHTML = "EXPIRED";
           }
         }, 1000);
+      </script>
+
+      <script>
+        function openCalendar() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var startDate = encodeURIComponent('YYYYMMDDTHHmmssZ'); // Format: YYYYMMDDTHHmmssZ (UTC time)
+        var endDate = encodeURIComponent('YYYYMMDDTHHmmssZ'); // Format: YYYYMMDDTHHmmssZ (UTC time)
+        var title = encodeURIComponent('Event Title');
+        var location = encodeURIComponent('Event Location');
+
+        if (/android/i.test(userAgent)) {
+          // Open Google Calendar for Android users
+          window.location.href = generateGoogleCalendarUrl();
+        } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
+          // For iOS users, prompt to download .ics file
+          downloadICSFile(startDate, endDate, title, location);
+        } else if (/windows/i.test(userAgent)) {
+          // For Windows users, prompt to download .ics file for Outlook
+          downloadICSFile(startDate, endDate, title, location);
+        } else {
+          // For other devices, provide options
+          toggleDropdown(startDate, endDate, title, location);
+        }
+      }
+
+      function generateGoogleCalendarUrl(startDate, endDate, title, location) {
+        return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + startDate + '/' + endDate + '&location=' + location;
+      }
+
+      function downloadICSFile(startDate, endDate, title, location) {
+
+        var appleCalendarUrl = './toniaefrancesco.ics';
+
+        // Trigger download
+        var downloadLink = document.createElement('a');
+        downloadLink.href = appleCalendarUrl;
+        downloadLink.download = 'toniaefrancesco.ics';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      }
+
+      document.getElementById('google-btn').addEventListener('click', function() {
+        // Add event to Google Calendar
+        // Implement Google Calendar functionality here
+      });
+
+      document.getElementById('outlook-btn').addEventListener('click', function() {
+        // Add event to Outlook Calendar
+        // Implement Outlook Calendar functionality here
+      });
+
       </script>
 
 </body>
