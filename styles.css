@@ -134,7 +134,7 @@ body{
 }
 
 .separatore-fiori{
-  height: 70px;
+  height: 54px;
   width: auto;
   background-image: url('./images/divisore.png');
   background-repeat: no-repeat;
@@ -196,8 +196,8 @@ body{
 .info-container {
   display: flex;
   justify-content: space-between;
-  margin-top: -151px;
-  padding: 151px 0 50px 0;
+  /* margin-top: -151px; 
+  padding: 151px 0 50px 0;*/
   max-width: 100%;
   width: 100%;
 }
@@ -445,7 +445,7 @@ body{
 
 @media screen and (max-width: 767px) {
   .intro-title span{
-    min-width: 100%;
+    min-width: 90%;
   }
 }
 
